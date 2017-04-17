@@ -14,8 +14,8 @@ config.plugins.push(
     compress: { warnings: false }
   }),
   new webpack.optimize.CommonsChunkPlugin({
-    // 公共代码分离打包
-    names: ['vendor', 'mainifest']
+    name: 'manifest',
+    minChunks: Infinity
   }),
   new webpack.optimize.AggressiveMergingPlugin(),
   new webpack.optimize.MinChunkSizePlugin({

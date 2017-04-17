@@ -6,13 +6,7 @@ var webpack = require('webpack'),
 
 module.exports = {
   entry: {
-    app: PATHS.SRC.join('app.js'),
-
-    // 框架 / 类库 单独打包
-    vendor: [
-      'vue',
-      'vue-router'
-    ]
+    app: PATHS.SRC.join('app.js')
   },
   // devtool - source map 配置详见 https://webpack.js.org/configuration/devtool
   devtool: false,
@@ -66,6 +60,12 @@ module.exports = {
     new NyanProgressPlugin(), // 进度条
     new webpack.DefinePlugin(Object.assign({
       'process.env.NODE_ENV': JSON.stringify(ENV.__ENV__)
-    }, ENV))
+    }, ENV)),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      }
+    })
   ]
 };

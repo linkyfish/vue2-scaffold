@@ -20,9 +20,6 @@ config.entry.app = [
 config.output.publicPath = '';
 
 config.plugins.push(
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor'
-  }),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
   new FriendlyErrorsPlugin(),
