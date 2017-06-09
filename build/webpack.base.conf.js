@@ -16,6 +16,7 @@ module.exports = {
     publicPath: ''
   },
   resolve: {
+    modules: [PATHS.ROOT.join('node_modules')],
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
@@ -39,7 +40,7 @@ module.exports = {
       }
     },{
       test: /\.js$/,
-      loader: 'babel-loader',
+      loader: 'babel-loader?cacheDirectory',
       include: PATHS.SRC
     }, {
       test: /\.(png|jpe?g|gif|svg)$/,
